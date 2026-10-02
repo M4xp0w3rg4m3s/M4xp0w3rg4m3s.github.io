@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Max Mateo | Technical Designer</title>
+<meta name="description" content="Portfolio of Max Mateo, game design and development student at CITM-UPC focused on technical design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070d1a;--surface:#0e1830;--surface2:#13213f;--line:#22345e;--ink:#e8efff;--muted:#93a6cc;--blue:#3d7bff;--cyan:#4cc9ff;
+--head:"Sora","Segoe UI",system-ui,sans-serif;--body:"DM Sans","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.7 var(--body)}
+a{color:var(--cyan);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
+h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;letter-spacing:-.01em}
+p{margin:0 0 1.1rem;max-width:64ch}
+section{padding:6rem 0}
+.sub{color:var(--muted);max-width:56ch;margin-bottom:2.5rem}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:10;transition:background .3s}
+.nav.solid{background:rgba(7,13,26,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+.logo{font:800 1.15rem var(--head);color:var(--ink);text-decoration:none}
+.nav nav a{margin-left:1.5rem;color:var(--ink);opacity:.8;text-decoration:none;font-weight:500;font-size:.95rem}
+.nav nav a:hover{opacity:1;color:var(--cyan)}
+@media(max-width:700px){.nav nav a:nth-child(-n+3){display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 5rem;overflow:hidden}
+.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#0b1530}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(7,13,26,.35) 0%,rgba(7,13,26,.55) 50%,var(--bg) 100%),linear-gradient(90deg,rgba(7,13,26,.8),transparent 70%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(3rem,9vw,7rem);font-weight:800;letter-spacing:-.03em;max-width:12ch}
+.hero .role{font:600 clamp(1.1rem,2.2vw,1.5rem) var(--head);color:var(--cyan);margin:1.2rem 0 .8rem}
+.hero p{font-size:1.15rem;color:#c5d3f0;max-width:52ch}
+.actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:2rem}
+.pill{padding:.85rem 1.7rem;border-radius:999px;font-weight:600;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--blue),#2a9bff);box-shadow:0 0 28px -4px rgba(61,123,255,.7)}
+.pill:hover{box-shadow:0 0 36px 0 rgba(76,201,255,.7)}
+.textlink{color:var(--ink);font-weight:600;border-bottom:2px solid var(--blue);text-decoration:none;padding-bottom:2px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:4rem}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+.about p{font-size:1.1rem}
+.now{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.8rem;align-self:start;position:sticky;top:6rem}
+.now h3{font-size:1.1rem;margin-bottom:1rem;color:var(--cyan)}
+.now p{font-size:1rem;color:var(--muted);margin-bottom:1rem}
+.now strong{color:var(--ink);display:block}
+
+/* work */
+#work{background:linear-gradient(180deg,var(--bg),#0a1430 40%,var(--bg))}
+.tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{font:600 .95rem var(--body);color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.6rem 1.2rem;cursor:pointer}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected=true]{color:#fff;background:var(--blue);border-color:var(--blue)}
+.stage{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:560px;padding:2rem}
+.stage::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(7,13,26,.55),rgba(7,13,26,.88))}
+.stage>*:not(video){position:relative;z-index:2}
+.stage .intro{max-width:56ch;color:#cfdbf5;margin-bottom:1.8rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.card{background:rgba(14,24,48,.82);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card .th{aspect-ratio:16/9;background:linear-gradient(135deg,#17316b,#0e1830);display:grid;place-items:center;font:800 2.2rem var(--head);color:var(--blue)}
+.card .th img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:1.1rem 1.3rem 1.3rem}
+.card h3{font-size:1.2rem;margin-bottom:.2rem}
+.card .meta{font-size:.88rem;color:var(--cyan);margin-bottom:.6rem}
+.card p{font-size:.98rem;color:#c0cde8;margin-bottom:.9rem}
+.card .lk a{margin-right:1rem;font-weight:600;font-size:.95rem}
+
+/* process */
+.loop{display:grid;grid-template-columns:320px 1fr;gap:2rem;align-items:stretch}
+@media(max-width:800px){.loop{grid-template-columns:1fr}}
+.steps{display:grid;gap:.7rem}
+.step{text-align:left;font:700 1.1rem var(--head);color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;cursor:pointer;transition:.2s}
+.step small{display:block;font:400 .9rem var(--body);margin-top:.15rem}
+.step[aria-selected=true]{color:#fff;border-color:var(--cyan);background:var(--surface2);box-shadow:0 0 0 1px var(--cyan),0 0 30px -8px var(--cyan)}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:2.2rem;display:flex;flex-direction:column;justify-content:center}
+.detail h3{font-size:1.8rem;margin-bottom:1rem}
+.detail p{color:#c0cde8;font-size:1.1rem}
+.detail .ex{border-left:3px solid var(--blue);padding-left:1rem;color:var(--muted);font-size:1rem;margin:0}
+
+/* path */
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;position:relative}
+.path::before{content:"";position:absolute;top:11px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+@media(max-width:900px){.path{grid-template-columns:1fr;padding-left:1.6rem}.path::before{top:0;bottom:0;left:5px;right:auto;width:2px;height:auto}}
+.node{position:relative;padding-top:2.2rem}
+@media(max-width:900px){.node{padding-top:0}}
+.node::before{content:"";position:absolute;top:4px;left:0;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan)}
+@media(max-width:900px){.node::before{top:6px;left:-1.6rem;width:12px;height:12px;border-width:2px}}
+.node h3{font-size:1.3rem;margin-bottom:.2rem}
+.node .yr{color:var(--cyan);font-size:.9rem;font-weight:600;margin-bottom:.6rem}
+.node p{font-size:.98rem;color:#c0cde8}
+.teach{margin-top:3rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.8rem 2rem;max-width:760px}
+.teach h3{font-size:1.2rem;margin-bottom:.6rem}.teach p{margin:0;color:#c0cde8}
+
+/* toolbox */
+.tool{display:grid;grid-template-columns:200px 1fr;gap:1rem 2rem;border-top:1px solid var(--line);padding:1.3rem 0}
+@media(max-width:700px){.tool{grid-template-columns:1fr}}
+.tool h3{font-size:1.1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips span{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.3rem .8rem;font-size:.95rem}
+
+/* personal */
+.fav{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.fav>div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.8rem}
+.fav h3{font-size:1.2rem;margin-bottom:.8rem;color:var(--cyan)}
+.fav p{color:#c0cde8;margin:0}
+
+/* contact */
+.contact{position:relative;overflow:hidden;text-align:center;padding:8rem 0}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(61,123,255,.35),transparent 65%)}
+.contact .wrap{position:relative}
+.contact p{margin-inline:auto;color:var(--muted)}
+.mail{display:inline-block;font:700 clamp(1.4rem,4vw,2.4rem) var(--head);color:#fff;text-decoration:none;border-bottom:3px solid var(--blue);margin:1rem 0 2.5rem}
+.social{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap}
+.social a{font-weight:600;color:var(--ink)}
+footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav"><div class="wrap">
+  <a class="logo" href="#top">Max Mateo</a>
+  <nav aria-label="Main"><a href="#about">About</a><a href="#work">Work</a><a href="#process">Process</a><a href="#path">Path</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <video class="vid bgvid" autoplay muted loop playsinline preload="metadata" poster="https://github.com/user-attachments/assets/ae90dc52-cdc4-45f2-9dac-e2905e8431c4"><source src="videos/hero.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <h1>Max Mateo</h1>
+    <div class="role">Technical Designer</div>
+    <p>Game design and development student at CITM-UPC, in my fourth year. I like to turn design ideas into working systems, then tune them with playtest until they feel right.</p>
+    <div class="actions">
+      <a class="pill" href="#contact">Get in touch</a>
+      <a class="textlink" href="#work">Explore my work</a>
+    </div>
+  </div>
+</section>
+
+<section id="about"><div class="wrap about">
+  <div>
+    <h2>Giving players freedom, and making it feel good</h2>
+    <p>What drives me to make games is the chance to make a player's day a little happier, whether through total freedom to approach a problem or through one highly satisfying mechanic. Playing games like Baldur's Gate 3 showed me how far player agency can go when an environment supports endless ways to be completed.</p>
+    <p>On our class project The Fable of the Eclipse I designed core gameplay loops and puzzle mechanics, then joined the programming team to script them myself. I enjoy the full cycle: building a feature, testing it with real people, reading the results and tweaking variables until it plays tight.</p>
+    <p>My long-term goal is to grow into a managing role, as I love being connected to my team, but right now I want to learn from senior developers and contribute wherever I add the most value.</p>
+  </div>
+  <aside class="now" aria-label="Quick facts">
+    <h3>At a glance</h3>
+    <p><strong>Studying</strong>Game Design and Development, CITM-UPC, Barcelona, English curriculim</p>
+    <p><strong>Languages</strong>Catalan and Spanish (native), English (Cambridge C1)</p>
+    <p><strong>Looking for</strong>Internships: Technical design, open to design and gameplay programming roles</p>
+  </aside>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <h2>Work</h2>
+  <p class="sub">Choose a category! Each one is a different side of how I work.</p>
+  <div class="tabs" role="tablist" id="tabs" aria-label="Project categories"></div>
+  <div class="stage" id="stage" role="tabpanel">
+    <video class="vid" id="stagevid" autoplay muted loop playsinline preload="none"></video>
+    <p class="intro" id="intro"></p>
+    <div class="cards" id="cards"></div>
+  </div>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <h2>How I like to iterate</h2>
+  <p class="sub">The loop I follow on every mechanic. Select a stage to see how I apply it.</p>
+  <div class="loop">
+    <div class="steps" role="tablist" id="steps" aria-label="Iteration stages"></div>
+    <div class="detail" id="detail" role="tabpanel"></div>
+  </div>
+</div></section>
+
+<section id="path"><div class="wrap">
+  <h2>Path so far</h2>
+  <p class="sub">Four years at CITM, from recreating a classic to building our own engine.</p>
+  <div class="path">
+    <div class="node"><h3>Year 1</h3><div class="yr">Foundations</div><p>Recreated Vampire Killer from MSX2 for Project 1 and learned 3D modeling, sculpting and texturing with Megaman Zero and Totodile.</p></div>
+    <div class="node"><h3>Year 2</h3><div class="yr">Systems and design</div><p>Designed the Fortune Fields board game across several prototypes, built physics-basrd games, an RPG with a full narrative, and took part in Global Game Jam 2025.</p></div>
+    <div class="node"><h3>Year 3</h3><div class="yr">Engines and teamwork</div><p>Worked on Woosh Engine and shipped The Fable of the Eclipse on our class engine, Loopie Engine, with feedback from professional developers.</p></div>
+    <div class="node"><h3>Year 4</h3><div class="yr">Starting September 2026</div><p>Focused on technical design and looking for an internship where I can learn from an experienced team.</p></div>
+  </div>
+  <div class="teach"><h3>Outside games: English teacher at Kids &amp; US</h3><p>Teaching children a new language taught me to break ideas into clear, engaging steps and to adapt to feedback in real time. I apply the same thinking to player onboarding and to introducing new mechanics organically.</p></div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <h2>Toolbox</h2>
+  <p class="sub">What I use day to day.</p>
+  <div class="tool"><h3>Engines</h3><div class="chips"><span>Unity</span><span>Unreal Engine</span><span>Godot</span><span>Loopie Engine</span></div></div>
+  <div class="tool"><h3>Programming</h3><div class="chips"><span>C</span><span>C++</span><span>C#</span></div></div>
+  <div class="tool"><h3>Art and animation</h3><div class="chips"><span>3ds Max</span><span>Maya</span><span>ZBrush</span><span>Substance Painter</span><span>Photoshop</span><span>Illustrator</span><span>Aseprite</span></div></div>
+  <div class="tool"><h3>Workflow</h3><div class="chips"><span>Git and GitHub</span><span>Visual Studio</span><span>VS Code</span><span>Figma</span><span>Machinations</span><span>MySQL</span></div></div>
+</div></section>
+
+<section id="off"><div class="wrap">
+  <h2>Off the clock</h2>
+  <p class="sub">Not the focus, but it shapes my taste.</p>
+  <div class="fav">
+    <div><h3>Games I come back to</h3><p>Baldur's Gate 3, Sovereign Tower, Hades I &amp; II, Minecraft, Slime rancher, Abzu, Minecraft, LEGO LOTR</p></div>
+    <div><h3>What I listen to</h3><p>I love Jamiroquai, probably my most listened group, Casiopea, Sade, Modjo, "Earth, Wind &amp; Fire"</p></div>
+    <div><h3>What I listen to *While I work*</h3><p>Here's the real deal, OSTs: Chrono Trigger, DK Country, Ridge Racer, Sonic R, Persona Series</p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p>Open to internships, collaborations and game jams. If you want to chat about videogames, send me a message.</p>
+  <a class="mail" href="mailto:m4xp0w3r.dev@gmail.com">m4xp0w3r.dev@gmail.com</a>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/max-mateo-ferret-16b0a52a2/">LinkedIn</a>
+    <a href="https://github.com/M4xp0w3rg4m3s">GitHub</a>
+    <a href="https://m4xp0w3r.itch.io/">Itch.io</a>
+    <a href="https://m4xp0w3rg4m3s.artstation.com/">ArtStation</a>
+    <a href="https://sketchfab.com/m4xp0w3r">Sketchfab</a>
+  </div>
+</div></section>
+</main>
+<footer>Max Mateo, 2026</footer>
+
+<script>
+/* ---------- EDIT YOUR CONTENT HERE ---------- */
+const CATS = [
+ {id:"games", name:"Games", video:"videos/games.mp4",
+  poster:"https://github.com/user-attachments/assets/36c6fd6c-7aac-4135-a02c-309315c5ee7f",
+  intro:"Complete games built with a team, where I worked on design, mechanics and scripting.",
+  items:[
+  {n:"The Fable of the Eclipse",m:"Project 3, Year 3. Action-adventure",d:"Exploration and puzzles on our own Loopie Engine. I designed the core loops, the narrative and puzzle mechanics, then scripted them.",img:"https://github.com/user-attachments/assets/ae90dc52-cdc4-45f2-9dac-e2905e8431c4",l:[["Website","https://mini-knight-studio.github.io/The-Fable-Of-The-Eclipse/"],["Itch.io","https://mini-knight-studio.itch.io/fable-of-the-eclipse"]]},
+  {n:"The Record of Lies: Crown's Formation",m:"Project 2, Year 2. Top-down RPG",d:"An RPG where I created a full narrative and design document.",img:"https://github.com/user-attachments/assets/6da3f425-d0ac-4d61-8bc1-d6edc19aa250",l:[["Repository","https://github.com/XeivUPC/RPG_Project2"],["Narrative and GDD (Google Drive)","https://drive.google.com/drive/folders/1PvPiuu6HcAIfPIyeJx6ChGxg485tUhVY?usp=drive_link"]]},
+  {n:"Echo of Ages",m:"Game Development, Year 2. Platformer",d:"A 2D platformer developed in C++ for the Game Development course.",img:"https://github.com/user-attachments/assets/36c6fd6c-7aac-4135-a02c-309315c5ee7f",l:[["Repository","https://github.com/M4xp0w3rg4m3s/development-game"]]},
+  {n:"Vampire Killer",m:"Project 1, Year 1. MSX2 tribute",d:"A recreation of the MSX2 game that later became Castlevania.",img:"",l:[["Repository","https://github.com/M4xp0w3rg4m3s/Vampire-Killer"],["Website","https://m4xp0w3rg4m3s.github.io/Vampire-Killer/"],["Trailer","https://www.youtube.com/watch?v=TM-ENfidVEI"]]}]},
+ {id:"engines", name:"Engines", video:"videos/engines.mp4",
+  poster:"https://github.com/user-attachments/assets/6619c372-869c-42cc-b31e-e2895b48991d",
+  intro:"Building the tools behind the games taught me what designers need from an engine.",
+  items:[
+  {n:"Loopie Engine",m:"Project 3, Year 3. Class engine",d:"The custom engine we used to make The Fable of the Eclipse.",img:"",l:[["See it in action","https://mini-knight-studio.github.io/The-Fable-Of-The-Eclipse/"]]},
+  {n:"Woosh Engine",m:"Game Engines, Year 3",d:"An engine built for the Game Engines course.",img:"",l:[["Repository","https://github.com/UPC-GameEngines-BCN-2025/WooshEngine"]]}]},
+ {id:"systems", name:"Physics and systems", video:"videos/systems.mp4",
+  poster:"https://github.com/user-attachments/assets/9e67877f-fb98-4ce4-9dec-1e1ab2ace040",
+  intro:"Games where feel comes from simulation: tuning forces, friction and response.",
+  items:[
+  {n:"Pinball",m:"Physics 2, Year 2. Pokémon Pinball tribute",d:"A tribute to the Game Boy Color classic.",img:"https://github.com/user-attachments/assets/7bbd30e7-0b6d-4dd6-ac03-d91db683a728",l:[["Repository","https://github.com/XeivUPC/Pinball_Game"]]}]},
+  {n:"Turbo Wheels",m:"Physics 2, Year 2. Racing game",d:"A racing game driven by physics.",img:"https://github.com/user-attachments/assets/9e67877f-fb98-4ce4-9dec-1e1ab2ace040",l:[["Repository","https://github.com/XeivUPC/Racing_Game"]]},
+ {id:"jams", name:"Game jams", video:"videos/jams.mp4",
+  poster:"https://github.com/user-attachments/assets/8b555e09-c16a-48b0-a2cd-f5ea47dcb76d",
+  intro:"Short deadlines, small teams and one theme.",
+  items:[
+  {n:"Bubble Bango",m:"Global Game Jam 2025, UPC Barcelona. Theme: Bubble",d:"Made in a single jam weekend.",img:"https://github.com/user-attachments/assets/8b555e09-c16a-48b0-a2cd-f5ea47dcb76d",l:[["Repository","https://github.com/albpb/BUBBLE-BANGO"],["Jam page","https://globalgamejam.org/games/2025/bubble-bango-6"]]}]},
+ {id:"tabletop", name:"Tabletop", video:"videos/tabletop.mp4",
+  poster:"https://github.com/user-attachments/assets/621116b4-1275-424f-a8b5-511ad9a07063",
+  intro:"Board game design is pure systems work: rules, balance and playtesting.",
+  items:[
+  {n:"Fortune Fields",m:"Design 1, Year 2. Board game",d:"Our own board game, refined through several iterations and prototypes. Print and play version available.",img:"https://github.com/user-attachments/assets/621116b4-1275-424f-a8b5-511ad9a07063",l:[["Print and play","https://drive.google.com/file/d/1uMCUIwWK68vinp-BeR8j4Mo2l2ZBEaHa/view?usp=sharing"],["Rules","https://drive.google.com/file/d/1l4a1eIoLxhDCQD1jgkxpumk_4bORvRZR/view?usp=sharing"],["Gameplay video","https://youtu.be/KSL4HYNO5Tw"]]}]},
+ {id:"art", name:"3D art", video:"videos/art.mp4",
+  poster:"https://github.com/M4xp0w3rg4m3s/M4xp0w3rg4m3s/assets/156011390/66961b32-f2d9-4a39-bb83-8da6e44311ed",
+  intro:"Modeling and texturing keep me close to what artists need from a design.",
+  items:[
+  {n:"Megaman Zero",m:"3D Modeling, Year 1. Mid-poly model",d:"A mid-poly character model.",img:"https://github.com/M4xp0w3rg4m3s/M4xp0w3rg4m3s/assets/156011390/66961b32-f2d9-4a39-bb83-8da6e44311ed",l:[["ArtStation","https://m4xp0w3rg4m3s.artstation.com/projects/OG1NeK"],["Sketchfab","https://sketchfab.com/3d-models/megaman-zero-mid-poly-fe952632dd1c4004bbf5974447fd94e9"]]},
+  {n:"Totodile",m:"3D Modeling, Year 1. Low to mid-poly",d:"A character model with realistic textures.",img:"https://github.com/M4xp0w3rg4m3s/M4xp0w3rg4m3s/assets/156011390/f4191fe7-565d-44b5-9e61-33615709f06f",l:[["ArtStation","https://m4xp0w3rg4m3s.artstation.com/projects/rJxL5m"],["Sketchfab","https://sketchfab.com/3d-models/totodile-realistic-textures-low-mid-poly-6163ca8ef3414e3ea87461819d043573"]]}]}
+];
+const LOOP = [
+ {t:"Build",s:"Turn the idea into a working loop",p:"I start by turning a creative idea into something playable: a loop, a puzzle or a rule set that can be tested quickly. I then script it myself so I control every variable.",e:"In The Fable of the Eclipse I designed the core gameplay loops and puzzles, then joined the programming team to implement them."},
+ {t:"Playtest",s:"Watch people actually play",p:"A mechanic only exists once someone else plays it. I watch where players hesitate, get stuck or find a way I did not plan for.",e:"Studio members (IOInteractive, Ubisoft) came to playtest our game, and their feedback shaped how we looked at it."},
+ {t:"Measure",s:"Collect real data",p:"I collect observations and numbers while people play, so decisions come from what happened rather than from what I expected.",e:"Reading how players actually experience a feature is the part of design I enjoy most."},
+ {t:"Tune",s:"Adjust until it feels right",p:"I rewrite or tweak values and rules, then go back to building and testing. I repeat until the mechanic feels tight and satisfying.",e:"Teaching English taught me the same habit: adapt the lesson from real-time feedback to keep students engaged."}
+];
+/* ---------- CODE ---------- */
+const $=id=>document.getElementById(id);
+const nav=$("nav");addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>40),{passive:true});
+const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(calm)document.querySelectorAll("video").forEach(v=>{v.removeAttribute("autoplay");v.pause()});
+
+const tabs=$("tabs"),vid=$("stagevid");
+CATS.forEach((c,i)=>{const b=document.createElement("button");b.className="tab";b.role="tab";b.textContent=c.name;b.onclick=()=>showCat(i);tabs.appendChild(b)});
+function showCat(i){
+  const c=CATS[i];
+  [...tabs.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));
+  vid.poster=c.poster;vid.src=c.video;vid.load();if(!calm)vid.play().catch(()=>{});
+  $("intro").textContent=c.intro;
+  $("cards").innerHTML=c.items.map(p=>`<article class="card"><div class="th">${p.img?`<img src="${p.img}" alt="Screenshot of ${p.n}" loading="lazy">`:p.n[0]}</div><div class="body"><h3>${p.n}</h3><div class="meta">${p.m}</div><p>${p.d}</p><div class="lk">${p.l.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join("")}</div></div></article>`).join("");
+}
+showCat(0);
+
+const steps=$("steps");
+LOOP.forEach((s,i)=>{const b=document.createElement("button");b.className="step";b.role="tab";b.innerHTML=`${s.t}<small>${s.s}</small>`;b.onclick=()=>showStep(i);steps.appendChild(b)});
+function showStep(i){
+  const s=LOOP[i];
+  [...steps.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));
+  $("detail").innerHTML=`<h3>${s.t}</h3><p>${s.p}</p><p class="ex">${s.e}</p>`;
+}
+showStep(0);
+</script>
+</body>
+</html>
